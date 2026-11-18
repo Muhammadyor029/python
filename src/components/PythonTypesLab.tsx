@@ -122,10 +122,10 @@ export function PythonTypesLab() {
                 <motion.span
                   layoutId="python-type-pill"
                   transition={{type: 'spring', stiffness: 430, damping: 34}}
-                  className="absolute inset-0 rounded-full bg-[#FF5A1F] shadow-[0_4px_14px_rgba(255,90,31,0.35)] -z-10"
+                  className="absolute inset-0 rounded-full bg-[#FF5A1F] shadow-[0_4px_14px_rgba(255,90,31,0.35)]"
                 />
               )}
-              {t.keyword}
+              <span className="relative z-10">{t.keyword}</span>
             </button>
           );
         })}
