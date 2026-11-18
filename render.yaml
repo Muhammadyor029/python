@@ -3,6 +3,7 @@ services:
     name: paimon-academy
     runtime: python
     plan: free
+    region: frankfurt
     buildCommand: "bash build.sh"
     startCommand: "gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 60"
     healthCheckPath: /api/health/
@@ -32,3 +33,5 @@ services:
 databases:
   - name: paimon-academy-db
     plan: free
+    region: frankfurt
+    postgresMajorVersion: "16"

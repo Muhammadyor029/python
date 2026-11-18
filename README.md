@@ -2,6 +2,13 @@
 
 Paimon 2.0 backend engineering academy. The visual design is preserved; the backend is Django and the React/Vite frontend is served by Django in production.
 
+## Live deployment
+
+- App: https://paimon-academy.onrender.com
+- Health: https://paimon-academy.onrender.com/api/health/
+- Render region: Frankfurt
+- Database: Render Postgres (free, PostgreSQL 16)
+
 ## Stack
 
 - Frontend: React 19, Vite 8, TypeScript, Tailwind CSS 4
