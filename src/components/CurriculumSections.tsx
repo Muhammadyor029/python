@@ -804,7 +804,7 @@ export function CurriculumSections({
                   </h3>
                 </div>
 
-                <div className="liquid-glass-pill inline-flex items-center p-1 rounded-full self-start relative">
+                <div className="liquid-glass-pill inline-flex flex-wrap max-w-full items-center p-1 rounded-full self-start relative">
                   {(
                     [
                       ['celery', 'Celery + Redis (14 ms)'],

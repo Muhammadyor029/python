@@ -194,7 +194,7 @@ export function InteractiveTestArena({
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5 self-start lg:self-center">
-          <div className="liquid-glass-pill inline-flex items-center p-1 rounded-full">
+          <div className="liquid-glass-pill inline-flex flex-wrap max-w-full items-center p-1 rounded-full">
             {(
               [
                 ['quiz', 'Random Test', Shuffle],

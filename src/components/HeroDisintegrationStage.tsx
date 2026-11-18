@@ -83,8 +83,10 @@ export function HeroDisintegrationStage({
 
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
     let reduced = mql.matches;
+    let vel = reduced ? -0.02 * window.innerWidth : -0.075 * window.innerWidth;
     const onMotionChange = (e: MediaQueryListEvent) => {
       reduced = e.matches;
+      vel = reduced ? -0.02 * window.innerWidth : -0.075 * window.innerWidth;
     };
     mql.addEventListener('change', onMotionChange);
 
@@ -129,10 +131,10 @@ export function HeroDisintegrationStage({
       ro.observe(beltEl);
     }
 
-    let vel = reduced ? 0 : -0.075 * window.innerWidth;
     let hover = 0;
     let isHovered = false;
     let dragging = false;
+    let dragMoved = false;
     let dragPendingDx = 0;
     let lastPointerX = 0;
     let lastPointerTime = 0;
@@ -158,17 +160,23 @@ export function HeroDisintegrationStage({
     const onPointerDown = (e: PointerEvent) => {
       if (e.button !== 0 && e.pointerType === 'mouse') return;
       dragging = true;
+      dragMoved = false;
       dragPendingDx = 0;
       activePointerId = e.pointerId;
       lastPointerX = e.clientX;
       lastPointerTime = performance.now();
       beltEl.classList.add('dragging');
-      beltEl.setPointerCapture(e.pointerId);
+      try {
+        beltEl.setPointerCapture(e.pointerId);
+      } catch {
+        // Pointer capture is not available in every in-app browser.
+      }
     };
     const onPointerMove = (e: PointerEvent) => {
       if (!dragging || e.pointerId !== activePointerId) return;
       const now = performance.now();
       const dx = e.clientX - lastPointerX;
+      if (Math.abs(dx) > 0.5) dragMoved = true;
       const dtMs = Math.max(8, now - lastPointerTime);
       dragPendingDx += dx;
       const instVel = (dx / dtMs) * 1000;
@@ -181,8 +189,15 @@ export function HeroDisintegrationStage({
       dragging = false;
       activePointerId = null;
       beltEl.classList.remove('dragging');
-      if (beltEl.hasPointerCapture(e.pointerId)) {
-        beltEl.releasePointerCapture(e.pointerId);
+      try {
+        if (beltEl.hasPointerCapture(e.pointerId)) {
+          beltEl.releasePointerCapture(e.pointerId);
+        }
+      } catch {
+        // Ignore capture cleanup failures from in-app browsers.
+      }
+      if (e.pointerType === 'touch' && !dragMoved) {
+        vel = -0.5 * window.innerWidth;
       }
     };
     const onWheel = (e: WheelEvent) => {
@@ -481,7 +496,9 @@ export function HeroDisintegrationStage({
         dragPendingDx = 0;
       }
 
-      const auto = reduced ? 0 : -0.075 * window.innerWidth;
+      const auto = reduced
+        ? -0.02 * window.innerWidth
+        : -0.075 * window.innerWidth;
       if (isHovered) {
         hover = Math.min(1, hover + 3.6 * dt);
       } else {
@@ -635,65 +652,73 @@ export function HeroDisintegrationStage({
         </div>
       </motion.section>
 
-      {/* Counter badge */}
-      <div className="badge" aria-live="polite">
-        <span className="badge-lbl">Backend dars oqimi</span>
-        <div className="badge-pill">
-          <span ref={badgeNumRef} className="badge-num">
-            88 qator kod
-          </span>
-          <span ref={badgePctRef} className="badge-pct">
-            1-modul · Python
-          </span>
+      <div className="hero-visual">
+        {/* Counter badge */}
+        <div className="badge" aria-live="polite">
+          <span className="badge-lbl">Backend dars oqimi</span>
+          <div className="badge-pill">
+            <span ref={badgeNumRef} className="badge-num">
+              88 qator kod
+            </span>
+            <span ref={badgePctRef} className="badge-pct">
+              1-modul · Python
+            </span>
+          </div>
         </div>
-      </div>
 
-      {/* Scanner line */}
-      <div className="scan" aria-hidden="true">
-        <i />
-        <b />
-      </div>
+        {/* Scanner line */}
+        <div className="scan" aria-hidden="true">
+          <i />
+          <b />
+        </div>
 
-      {/* Belt */}
-      <div
-        ref={beltRef}
-        className="belt"
-        aria-label="Backend tushunchalaridan haqiqiy Python va Django kodiga o'tuvchi interaktiv tasma"
-      >
-        <div ref={gapProbeRef} className="gap-probe" aria-hidden="true" />
+        {/* Belt */}
+        <div
+          ref={beltRef}
+          className="belt"
+          aria-label="Backend tushunchalaridan haqiqiy Python va Django kodiga o'tuvchi interaktiv tasma"
+        >
+          <div ref={gapProbeRef} className="gap-probe" aria-hidden="true" />
 
-        <div className="codes" aria-hidden="true">
-          {BACKEND_CARDS.map((card, i) => (
-            <div
-              key={`code-${card.id}`}
-              ref={(el) => {
-                codeRefs.current[i] = el;
-              }}
-              className="code"
-            >
-              <div className="code-html">{card.code}</div>
-              <div className="code-meta">
-                {`# fayl: ${card.fileUrl}\n# bosqich: ${card.moduleTag}\n# 0 dan productiongacha`}
+          <div className="codes" aria-hidden="true">
+            {BACKEND_CARDS.map((card, i) => (
+              <div
+                key={`code-${card.id}`}
+                ref={(el) => {
+                  codeRefs.current[i] = el;
+                }}
+                className="code"
+              >
+                <div className="code-html">{card.code}</div>
+                <div className="code-meta">
+                  {`# fayl: ${card.fileUrl}\n# bosqich: ${card.moduleTag}\n# 0 dan productiongacha`}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <div className="cards">
+            {BACKEND_CARDS.map((card, i) => (
+              <div
+                key={`card-${card.id}`}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                className={`card card-${card.id}`}
+              >
+                <BackendCardBody id={card.id} />
+              </div>
+            ))}
+          </div>
+
+          <canvas ref={canvasRef} className="fx" aria-hidden="true" />
         </div>
 
-        <div className="cards">
-          {BACKEND_CARDS.map((card, i) => (
-            <div
-              key={`card-${card.id}`}
-              ref={(el) => {
-                cardRefs.current[i] = el;
-              }}
-              className={`card card-${card.id}`}
-            >
-              <BackendCardBody id={card.id} />
-            </div>
-          ))}
+        <div className="belt-hint" aria-hidden="true">
+          <span>Suring</span>
+          <span className="belt-hint-dot" />
+          <span>Bosing</span>
         </div>
-
-        <canvas ref={canvasRef} className="fx" aria-hidden="true" />
       </div>
     </main>
   );

@@ -6,10 +6,12 @@ import {
   Compass,
   Cpu,
   FolderGit2,
+  Menu,
   Moon,
   ShieldAlert,
   Sun,
   Terminal,
+  X,
 } from 'lucide-react';
 import {CurriculumSections} from './components/CurriculumSections';
 import {ActiveView, DashboardOverview} from './components/DashboardOverview';
@@ -48,6 +50,14 @@ const MODAL_CONTENT: Record<string, ModalInfo> = {
 };
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+const PRIMARY_NAV_ITEMS = [
+  ['dashboard', 'Dashboard'],
+  ['hammasi', '1. Barcha Mavzular'],
+  ['python', '2. Python'],
+  ['django', '3. Django & SQL'],
+  ['api', '4. API (DRF)'],
+] as const;
 
 const STUDIO_MENU_ITEMS: {
   view: ActiveView;
@@ -124,6 +134,7 @@ export default function App() {
     useState<VisualLabKey>('python-visual');
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [studioMenuOpen, setStudioMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const [academyState, setAcademyState] = useState<AcademyState>(() =>
@@ -174,6 +185,25 @@ export default function App() {
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [studioMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    const onResize = () => {
+      if (window.innerWidth > 900) setMobileMenuOpen(false);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', onResize);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [mobileMenuOpen]);
 
   // Sync academy progress with backend state store on mount
   useEffect(() => {
@@ -231,6 +261,7 @@ export default function App() {
     (view: ActiveView, scrollTargetId?: string) => {
       setActiveModal(null);
       setStudioMenuOpen(false);
+      setMobileMenuOpen(false);
       setActiveView(view);
       if (scrollTimerRef.current) {
         window.clearInterval(scrollTimerRef.current);
@@ -283,6 +314,7 @@ export default function App() {
     const onHashOrPop = () => {
       setActiveView(parseViewFromHash());
       setStudioMenuOpen(false);
+      setMobileMenuOpen(false);
     };
     window.addEventListener('hashchange', onHashOrPop);
     window.addEventListener('popstate', onHashOrPop);
@@ -368,15 +400,7 @@ export default function App() {
           </a>
 
           <nav className="nav-links" aria-label="Asosiy menyu">
-            {(
-              [
-                ['dashboard', 'Dashboard'],
-                ['hammasi', '1. Barcha Mavzular'],
-                ['python', '2. Python'],
-                ['django', '3. Django & SQL'],
-                ['api', '4. API (DRF)'],
-              ] as const
-            ).map(([viewKey, label]) => (
+            {PRIMARY_NAV_ITEMS.map(([viewKey, label]) => (
               <button
                 key={viewKey}
                 type="button"
@@ -460,6 +484,21 @@ export default function App() {
           <div className="nav-actions">
             <button
               type="button"
+              className="nav-mobile-toggle liquid-glass-pill"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={mobileMenuOpen ? 'Menyuni yopish' : 'Menyuni ochish'}
+              onClick={() => setMobileMenuOpen((open) => !open)}
+            >
+              {mobileMenuOpen ? (
+                <X className="w-4 h-4" />
+              ) : (
+                <Menu className="w-4 h-4" />
+              )}
+            </button>
+
+            <button
+              type="button"
               className="theme-toggle liquid-glass-pill"
               onClick={() => setIsDark((prev) => !prev)}
               aria-label={
@@ -506,6 +545,95 @@ export default function App() {
             </button>
           </div>
         </header>
+
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              key="mobile-navigation-backdrop"
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              exit={{opacity: 0}}
+              transition={{duration: 0.18}}
+              className="nav-mobile-backdrop"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <motion.nav
+                id="mobile-navigation"
+                initial={{opacity: 0, y: -10, scale: 0.98}}
+                animate={{opacity: 1, y: 0, scale: 1}}
+                exit={{opacity: 0, y: -8, scale: 0.98}}
+                transition={{duration: 0.22, ease: EASE}}
+                className="nav-mobile-menu"
+                aria-label="Mobil menyu"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="nav-mobile-group">
+                  <p className="nav-mobile-label">Bo'limlar</p>
+                  {PRIMARY_NAV_ITEMS.map(([viewKey, label]) => (
+                    <button
+                      key={viewKey}
+                      type="button"
+                      onClick={() => handleSelectView(viewKey)}
+                      className={`nav-mobile-link ${
+                        activeView === viewKey ? 'nav-mobile-link-active' : ''
+                      }`}
+                    >
+                      <span>{label}</span>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="nav-mobile-group">
+                  <p className="nav-mobile-label">2.0 Studiyalar</p>
+                  {STUDIO_MENU_ITEMS.map((item) => {
+                    const Icon = item.icon;
+                    const active = activeView === item.view;
+                    return (
+                      <button
+                        key={item.view}
+                        type="button"
+                        onClick={() => handleSelectView(item.view)}
+                        className={`nav-mobile-link nav-mobile-studio ${
+                          active ? 'nav-mobile-link-active' : ''
+                        }`}
+                      >
+                        <Icon className="w-4 h-4 shrink-0" />
+                        <span>
+                          <span className="nav-mobile-link-title">
+                            {item.label}
+                          </span>
+                          <span className="nav-mobile-link-sub">{item.sub}</span>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="nav-mobile-actions">
+                  <button
+                    type="button"
+                    className="nav-mobile-primary"
+                    onClick={() =>
+                      handleSelectView(
+                        activeTestTarget.view,
+                        activeTestTarget.id
+                      )
+                    }
+                  >
+                    Random Testlar
+                  </button>
+                  <button
+                    type="button"
+                    className="nav-mobile-secondary"
+                    onClick={() => handleSelectView('roadmap')}
+                  >
+                    Profil · {academyState.xp} XP
+                  </button>
+                </div>
+              </motion.nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* DASHBOARD vs FOCUSED SECTION VIEW */}
         <AnimatePresence mode="wait">
