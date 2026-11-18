@@ -1,0 +1,1060 @@
+🐍  Python
+Intervyu Savollari va Javoblari
+0 dan Advanced gacha • 150 ta savol
+
+Freymworklar kiritilmagan | Barcha darajalar
+Mundarija
+🌱 Boshlang'ich  savol 1–25
+📘 O'rta  savol 26–65
+🔬 Yuqori-O'rta  savol 66–85
+🚀 Ilgor  savol 86–120
+💎 Ekspert  savol 121–150
+🌱  1-DARAJA: BOSHLANG'ICH (BEGINNER)
+1.  Python nima?
+Javob: Python — yuqori darajali, interpretatsiyalanadigan, umumiy maqsadli dasturlash tili. Guido van Rossum tomonidan 1991-yilda yaratilgan. Sodda sintaksisi va o'qilishi oson kodi bilan mashhur.
+2.  Python interpretatorlari qanday ishlaydi?
+Javob: Python kodi avval bytekodga (.pyc) kompilyatsiya qilinadi, so'ng Python Virtual Machine (PVM) bu bytekodni qator-qator o'qib bajaradi. Shu sababli Python "interpretatsiyalanadigan" deb ataladi.
+3.  Python'da o'zgaruvchi e'lon qilish qanday?
+Javob: Python'da o'zgaruvchi uchun alohida kalit so'z yo'q. Shunchaki nom = qiymat yoziladi. Tur avtomatik aniqlanadi (dinamik tiplash).
+x = 10
+ism = "Ali"
+narx = 3.14
+faol = True
+4.  Python'da asosiy ma'lumot turlari (data types) qaysilar?
+Javob: int (butun son), float (haqiqiy son), str (matn), bool (mantiqiy), list (ro'yxat), tuple (kortej), dict (lug'at), set (to'plam), NoneType.
+5.  Python'da izoh (comment) qanday yoziladi?
+Javob: Bir qatorli izoh # belgisi bilan boshlanadi. Ko'p qatorli izoh uchun uch tirnoq ishlatiladi.
+# Bu bir qatorli izoh
+"""
+Bu ko'p qatorli
+izoh
+"""
+6.  print() funksiyasi nima qiladi?
+Javob: print() — ekranga chiqish uchun ishlatiladi. Ko'p argument qabul qiladi, sep (ajratuvchi) va end (tugash belgisi) parametrlari bor.
+print("Salom", "Dunyo", sep=", ", end="!\n")
+7.  input() funksiyasi nima qiladi?
+Javob: input() foydalanuvchidan klaviaturadan ma'lumot oladi. Har doim str (matn) qaytaradi. Agar son kerak bo'lsa, int() yoki float() bilan o'girish kerak.
+ism = input("Ismingiz: ")
+yosh = int(input("Yoshingiz: "))
+8.  Python'da if-elif-else qanday ishlaydi?
+Javob: Shartli operatorlar: if (agar), elif (aks holda agar), else (aks holda). Indentation (bo'sh joy) muhim — Python bloklar uchun figurali qavslar o'rniga indentation ishlatadi.
+baho = 85
+if baho >= 90:
+    print("A")
+elif baho >= 75:
+    print("B")
+else:
+    print("C")
+9.  for tsikli qanday ishlaydi?
+Javob: for tsikli ketma-ketlik (list, tuple, str, range) bo'ylab iteratsiya qiladi.
+for i in range(5):
+    print(i)  # 0,1,2,3,4
+for harf in "Python":
+    print(harf)
+10.  while tsikli qanday ishlaydi?
+Javob: while tsikl shart True bo'lgunicha ishlaydi. Shart False bo'lganda to'xtaydi.
+n = 0
+while n < 5:
+    print(n)
+    n += 1
+11.  break va continue nima?
+Javob: break — tsiklni to'liq to'xtatadi. continue — joriy iteratsiyani o'tkazib, keyingisiga o'tadi.
+for i in range(10):
+    if i == 5: break    # 5 da to'xtaydi
+    if i % 2 == 0: continue  # juftlarni o'tkazib ketadi
+    print(i)
+12.  range() funksiyasi nima?
+Javob: range(stop), range(start, stop), range(start, stop, step) — sonlar ketma-ketligi yaratadi. Xotira tejovchi (lazy evaluation).
+range(5)         # 0,1,2,3,4
+range(2, 8)      # 2,3,4,5,6,7
+range(0, 10, 2)  # 0,2,4,6,8
+13.  Python'da funksiya qanday e'lon qilinadi?
+Javob: def kalit so'zi bilan e'lon qilinadi. Qaytarish uchun return ishlatiladi. Return bo'lmasa None qaytaradi.
+def qo'shish(a, b):
+    return a + b
+natija = qo'shish(3, 5)  # 8
+14.  Python'da default parametr nima?
+Javob: Funksiyaga chaqiruvda argument berilmasa ishlatiladi. Default parametrlar majburiy parametrlardan keyin yoziladi.
+def salomlash(ism, til="uz"):
+    if til == "uz": print(f"Salom, {ism}!")
+    else: print(f"Hello, {ism}!")
+salomlash("Ali")         # Salom, Ali!
+salomlash("Bob", "en")   # Hello, Bob!
+15.  List nima va qanday yaratiladi?
+Javob: List — tartibli, o'zgaruvchan, takrorlanadigan elementlar to'plami. Kvadrat qavslar [] bilan yaratiladi.
+mevalar = ["olma", "banan", "uzum"]
+sonlar = [1, 2, 3, 4, 5]
+aralash = [1, "salom", True, 3.14]
+16.  List'ning asosiy metodlari qaysilar?
+Javob: append() — oxiriga qo'shish, insert() — joyiga qo'shish, remove() — birinchisini o'chirish, pop() — oxirgisini o'chirish va qaytarish, sort() — tartiblash, reverse() — teskari aylantirish.
+lst = [3, 1, 4, 1, 5]
+lst.append(9)    # [3,1,4,1,5,9]
+lst.sort()       # [1,1,3,4,5,9]
+lst.pop()        # 9 qaytaradi
+17.  Tuple nima va listdan farqi?
+Javob: Tuple — tartibli, O'ZGARMAS ketma-ketlik. Qavslar () bilan yaratiladi. Listdan farqi: o'zgartirish mumkin emas (immutable), tezroq ishlaydi, dict kalit bo'la oladi.
+t = (1, 2, 3)
+t[0]       # 1 — o'qish mumkin
+# t[0] = 5  # TypeError! O'zgartirish mumkin emas
+18.  Dict (lug'at) nima?
+Javob: Dict — kalit-qiymat (key-value) juftliklari to'plami. Jingalak qavslar {} yoki dict() bilan yaratiladi. Kalitlar noyob bo'lishi kerak.
+talaba = {"ism": "Ali", "yosh": 15, "sinf": "9A"}
+talaba["ism"]         # "Ali"
+talaba["baho"] = 95  # yangi kalit qo'shish
+19.  Dict'ning asosiy metodlari qaysilar?
+Javob: keys() — barcha kalitlar, values() — barcha qiymatlar, items() — kalit-qiymat juftliklari, get() — xavfsiz olish (yo'q bo'lsa None yoki default), update() — yangilash, pop() — o'chirish.
+d = {"a": 1, "b": 2}
+d.get("c", 0)   # 0 — xato bermaydi
+for k, v in d.items(): print(k, v)
+20.  Set nima?
+Javob: Set — noyob elementlar to'plami. Tartibsiz, indekssiz. Takroriy elementlarni avtomatik olib tashlaydi. Matematik to'plam amallarini qo'llab-quvvatlaydi.
+s = {1, 2, 2, 3, 3}  # {1, 2, 3}
+s.add(4)
+s.remove(2)
+A | B  # union
+A & B  # intersection
+21.  len() funksiyasi nima?
+Javob: len() — obyektdagi elementlar sonini qaytaradi. String, list, tuple, dict, set uchun ishlaydi.
+len("Salom")    # 5
+len([1,2,3])  # 3
+len({"a":1})  # 1
+22.  type() funksiyasi nima?
+Javob: type() — obyektning ma'lumot turini qaytaradi.
+type(42)       # <class 'int'>
+type("salom")  # <class 'str'>
+type([1,2])    # <class 'list'>
+23.  Tur o'zgartirish (type casting) qanday amalga oshiriladi?
+Javob: int(), float(), str(), list(), tuple(), set() funksiyalari bilan bir turdan boshqasiga o'girish mumkin.
+int("42")      # 42
+float("3.14")  # 3.14
+str(100)       # "100"
+list((1,2,3))  # [1,2,3]
+24.  Python'da string formatlash usullari qaysilar?
+Javob: 3 ta usul: % operator (eski), .format() metod, f-string (zamonaviy, eng tez). f-string Python 3.6+ da mavjud.
+ism = "Ali"; yosh = 15
+print(f"Salom, {ism}! Yoshingiz: {yosh}")  # f-string
+print("Salom, {}!".format(ism))            # .format()
+25.  String'ning asosiy metodlari qaysilar?
+Javob: upper()/lower() — katta/kichik harf, strip() — bo'shliqlarni tozalash, split() — bo'lib tashlash, join() — birlashtirish, replace() — almashtirish, find() — topish, startswith()/endswith() — tekshirish.
+s = "  Salom Dunyo  "
+s.strip()           # "Salom Dunyo"
+s.lower()           # "  salom dunyo  "
+"Salom".split("a")  # ["S", "lom"]
+"-".join(["a","b"])  # "a-b"
+
+📘  2-DARAJA: O'RTA (INTERMEDIATE)
+26.  List comprehension nima?
+Javob: List yaratishning qisqa va tez usuli. [ifoda for element in ketma-ketlik if shart] ko'rinishida yoziladi.
+juftlar = [x for x in range(10) if x % 2 == 0]
+# [0, 2, 4, 6, 8]
+kvadratlar = [x**2 for x in range(5)]
+# [0, 1, 4, 9, 16]
+27.  Dict comprehension nima?
+Javob: Dict yaratishning qisqa usuli. {kalit: qiymat for element in ketma-ketlik} ko'rinishida.
+sonlar = [1, 2, 3, 4, 5]
+kvadrat_dict = {x: x**2 for x in sonlar}
+# {1:1, 2:4, 3:9, 4:16, 5:25}
+28.  Set comprehension nima?
+Javob: Set yaratishning qisqa usuli. {ifoda for element in ketma-ketlik} ko'rinishida.
+noyob = {x % 3 for x in range(10)}
+# {0, 1, 2}
+29.  Lambda funksiya nima?
+Javob: Nomssiz (anonymous) bir satrli funksiya. lambda parametrlar: ifoda ko'rinishida. sorted(), map(), filter() bilan ko'p ishlatiladi.
+qo'shish = lambda a, b: a + b
+qo'shish(3, 5)  # 8
+sonlar = [3,1,4,1,5]
+sonlar.sort(key=lambda x: -x)  # kamayish tartibida
+30.  map() funksiyasi nima?
+Javob: map(funksiya, ketma-ketlik) — ketma-ketlikning har bir elementiga funksiya qo'llaydi va iterator qaytaradi.
+sonlar = [1, 2, 3, 4]
+kvadratlar = list(map(lambda x: x**2, sonlar))
+# [1, 4, 9, 16]
+31.  filter() funksiyasi nima?
+Javob: filter(funksiya, ketma-ketlik) — shart True bo'lgan elementlarni qaytaradi.
+sonlar = [1, 2, 3, 4, 5, 6]
+juftlar = list(filter(lambda x: x%2==0, sonlar))
+# [2, 4, 6]
+32.  zip() funksiyasi nima?
+Javob: zip() bir nechta ketma-ketlikni parallel ravishda birlashtiradi. Eng qisqa ketma-ketlik uzunligida tugaydi.
+ismlar = ["Ali", "Vali", "Zara"]
+yoshlar = [14, 15, 16]
+for ism, yosh in zip(ismlar, yoshlar):
+    print(f"{ism}: {yosh}")
+33.  enumerate() funksiyasi nima?
+Javob: enumerate() ketma-ketlik elementlarini index bilan birga qaytaradi. Manuelroq i += 1 o'rniga ishlatiladi.
+mevalar = ["olma", "banan", "uzum"]
+for i, meva in enumerate(mevalar, start=1):
+    print(f"{i}. {meva}")
+34.  *args va **kwargs nima?
+Javob: *args — nomlangan bo'lmagan ixtiyoriy sondagi argumentlarni tuple sifatida oladi. **kwargs — kalit so'z argumentlarini dict sifatida oladi.
+def yig'indisi(*args):
+    return sum(args)
+yig'indisi(1, 2, 3, 4)  # 10
+
+def ma'lumot(**kwargs):
+    for k, v in kwargs.items(): print(k, v)
+ma'lumot(ism="Ali", yosh=15)
+35.  Python'da modul nima va qanday import qilinadi?
+Javob: Modul — Python kodi bilan to'ldirilgan .py fayl. import yoki from...import bilan ulanadi.
+import math
+math.sqrt(16)       # 4.0
+
+from math import pi, sqrt
+sqrt(25)            # 5.0
+
+import random as r  # taxallus bilan
+36.  OOP nima? Python'da class qanday yaratiladi?
+Javob: OOP (Object-Oriented Programming) — obyektlarga asoslangan dasturlash. class kalit so'zi bilan sinflar yaratiladi. Atributlar va metodlar sinfda joylashadi.
+class Talaba:
+    def __init__(self, ism, baho):
+        self.ism = ism
+        self.baho = baho
+    def ko'rsat(self):
+        print(f"{self.ism}: {self.baho}")
+t = Talaba("Ali", 95)
+t.ko'rsat()  # Ali: 95
+37.  __init__ metodi nima?
+Javob: __init__ — konstruktor. Obyekt yaratilganda avtomatik chaqiriladi. self.atribut ko'rinishida ob'ekt atributlari e'lon qilinadi. self — ob'ektning o'ziga ishora qiladi.
+38.  Meros (Inheritance) nima?
+Javob: Bola sinf ota sinfdan atribut va metodlarni meros oladi. class Bola(Ota): ko'rinishida yoziladi. super() bilan ota sinfning metodlari chaqiriladi.
+class Hayvon:
+    def ovoz(self): print("...")
+class It(Hayvon):
+    def ovoz(self): print("Vov!")
+it = It()
+it.ovoz()  # Vov!
+39.  Encapsulation (inkapsulyatsiya) nima?
+Javob: Ma'lumotlarni va metodlarni bir joyda saqlash va tashqaridan himoya qilish. Python'da _ (protected) va __ (private) prefikslari bilan amalga oshiriladi.
+class BankHisobi:
+    def __init__(self, balans):
+        self.__balans = balans  # private
+    def balansni_ko'rsat(self):
+        return self.__balans
+40.  Polymorphism (polimorfizm) nima?
+Javob: Turli sinflar bir xil nomli metodga ega bo'lib, har biri o'zicha ishlashi. Method overriding — bola sinfda ota sinf metodini qayta yozish.
+class Krug:
+    def yuza(self, r): return 3.14 * r * r
+class Kvadrat:
+    def yuza(self, a): return a * a
+41.  Python'da exception handling (xatoliklarni ushlash) qanday?
+Javob: try-except-else-finally bloki bilan xatoliklarni boshqarish. try — sinab ko'riladi, except — xato bo'lsa, else — xato bo'lmasa, finally — har doim ishlaydi.
+try:
+    son = int(input("Son: "))
+    natija = 10 / son
+except ZeroDivisionError:
+    print("Nolga bo'lish mumkin emas!")
+except ValueError:
+    print("Son kiriting!")
+finally:
+    print("Tugadi")
+42.  Asosiy exception turlari qaysilar?
+Javob: ValueError (noto'g'ri qiymat), TypeError (noto'g'ri tur), ZeroDivisionError (nolga bo'lish), IndexError (noto'g'ri indeks), KeyError (noto'g'ri kalit), FileNotFoundError (fayl topilmadi), AttributeError (atribut yo'q), NameError (nom yo'q).
+43.  Python'da fayl bilan ishlash qanday?
+Javob: open() funksiyasi bilan fayl ochiladi. Rejimlar: r (o'qish), w (yozish, mavjud bo'lsa o'chiradi), a (qo'shib yozish), rb/wb (ikkilik). with bilan avtomatik yopiladi.
+with open("fayl.txt", "w", encoding="utf-8") as f:
+    f.write("Salom\n")
+
+with open("fayl.txt", "r") as f:
+    matn = f.read()
+44.  Slicing (kesish) nima?
+Javob: ketma-ketlik[bosh:oxir:qadam] — ketma-ketlikning bir qismini olish. Indekslar 0 dan boshlanadi. Manfiy indeks oxirdan hisoblaydi.
+s = [0,1,2,3,4,5,6,7,8,9]
+s[2:5]    # [2,3,4]
+s[:3]     # [0,1,2]
+s[7:]     # [7,8,9]
+s[::2]    # [0,2,4,6,8] — har ikkinchi
+s[::-1]   # [9,8,...,0] — teskari
+45.  Python'da is va == farqi nima?
+Javob: == — qiymatlar tengligini tekshiradi. is — bir xil obyektni ko'rsatayotganini tekshiradi (xotira manzili). None tekshirish uchun is None ishlatiladi.
+a = [1,2,3]
+b = [1,2,3]
+a == b   # True — qiymatlar teng
+a is b   # False — turli obyektlar
+x = None
+x is None  # True — to'g'ri usul
+46.  Python'da None nima?
+Javob: None — qiymat yo'qligini bildiruvchi maxsus ob'ekt. NoneType turiga mansub. Funksiya return qaytarmasa None qaytaradi. is None bilan tekshiriladi.
+47.  Global va local o'zgaruvchilar farqi?
+Javob: Local o'zgaruvchi funksiya ichida e'lon qilingan, faqat o'sha funksiyada ko'rinadi. Global o'zgaruvchi modul darajasida, hamma joyda ko'rinadi. Funksiyada global ni o'zgartirish uchun global kalit so'zi kerak.
+x = 10  # global
+def f():
+    global x
+    x = 20  # globalni o'zgartiradi
+f()
+print(x)  # 20
+48.  Shallow copy va deep copy farqi nima?
+Javob: Shallow copy — yangi ob'ekt, lekin ichidagi ob'ektlar ssilka. Deep copy — to'liq mustaqil nusxa. copy moduli ishlatiladi.
+import copy
+asl = [[1,2],[3,4]]
+yuzaki = copy.copy(asl)      # shallow
+chuqur = copy.deepcopy(asl)  # deep
+asl[0][0] = 99
+# yuzaki[0][0] ham 99 bo'ladi!
+# chuqur[0][0] esa 1 qoladi
+49.  sorted() va list.sort() farqi?
+Javob: list.sort() — listni o'zi tartiblab, None qaytaradi (in-place). sorted() — yangi tartibli list qaytaradi, asl o'zgarmaydi. sorted() har qanday iterable qabul qiladi.
+lst = [3,1,4,1,5]
+yangi = sorted(lst)        # [1,1,3,4,5], lst o'zgarmadi
+lst.sort(reverse=True)     # [5,4,3,1,1], lst o'zgardi
+50.  Python'da string immutable (o'zgarmas) ekanligini tushuntiring.
+Javob: String yaratilgandan so'ng uning ichidagi harflarni o'zgartirib bo'lmaydi. Har qanday o'zgartirish yangi string yaratadi. Bu xotira optimallashtirish va xavfsizlik uchun foydali.
+s = "Salom"
+# s[0] = "s"  # TypeError!
+s = s.lower()  # yangi string yaratildi: "salom"
+51.  Generator nima va listdan farqi?
+Javob: Generator — elementlarni birma-bir, kerak bo'lganda yaratadi (lazy). Xotirani tejaydi. () bilan yoki yield bilan yaratiladi. List esa barcha elementlarni xotirada saqlaydi.
+# List comprehension — hamma xotirada
+lst = [x**2 for x in range(1000000)]
+# Generator — birma-bir
+gen = (x**2 for x in range(1000000))
+next(gen)  # 0
+next(gen)  # 1
+52.  yield kalit so'zi nima?
+Javob: yield — funksiyadan generator yasaydi. Har chaqiruvda qiymat qaytarib, funksiya holatini saqlab qoladi. return esa funksiyani to'liq yakunlaydi.
+def sanoqchi(n):
+    for i in range(n):
+        yield i
+g = sanoqchi(3)
+next(g)  # 0
+next(g)  # 1
+next(g)  # 2
+53.  Decorator nima?
+Javob: Decorator — funksiyani o'zgartirmay, unga qo'shimcha xatti-harakat qo'shadigan funksiya. @ belgisi bilan ishlatiladi. Wrapper pattern asosida.
+def log_qil(funksiya):
+    def wrapper(*args, **kwargs):
+        print("Boshlanadi...")
+        natija = funksiya(*args, **kwargs)
+        print("Tugadi.")
+        return natija
+    return wrapper
+
+@log_qil
+def salomlash(ism):
+    print(f"Salom, {ism}!")
+54.  Closure nima?
+Javob: Closure — ichki funksiya tashqi funksiyaning o'zgaruvchilarini "eslab qolishi". Tashqi funksiya tugagandan keyin ham o'sha o'zgaruvchilarga kirish mumkin.
+def ko'paytiruvchi(n):
+    def ko'paytir(x):
+        return x * n  # n ni eslab qoldi
+    return ko'paytir
+ikkilash = ko'paytiruvchi(2)
+ikkilash(5)  # 10
+55.  Python'da *args va **kwargs unpack qilish nima?
+Javob: * operator listni/tupleni alohida argumentlarga yoyadi. ** operator dictni kalit so'z argumentlarga yoyadi.
+def yig'(a, b, c): return a+b+c
+lst = [1, 2, 3]
+yig'(*lst)          # yig'(1,2,3) bilan teng
+d = {"a":1,"b":2,"c":3}
+yig'(**d)           # yig'(a=1,b=2,c=3) bilan teng
+56.  isinstance() va issubclass() nima?
+Javob: isinstance(ob'ekt, tur) — ob'ekt berilgan turga mansub yoki yo'qligini tekshiradi. issubclass(bola, ota) — sinf meros olganini tekshiradi.
+isinstance(42, int)        # True
+isinstance("hi", (str,int)) # True — bir nechtasini tekshirish
+issubclass(bool, int)      # True
+57.  Python'da __str__ va __repr__ farqi?
+Javob: __str__ — foydalanuvchi uchun o'qilishi qulay ko'rinish (print()). __repr__ — dasturchi uchun to'liq ko'rinish, debuggingda. repr() — __repr__ ni chaqiradi.
+class Nuqta:
+    def __init__(self, x, y): self.x=x; self.y=y
+    def __str__(self): return f"({self.x}, {self.y})"
+    def __repr__(self): return f"Nuqta({self.x},{self.y})"
+58.  Property decorator nima?
+Javob: @property — metodga xuddi atribut kabi murojaat imkonini beradi. Getter, setter, deleter ni yaratish uchun ishlatiladi. Private atributlarni himoya qilishga yordam beradi.
+class Doira:
+    def __init__(self, r): self._r = r
+    @property
+    def radius(self): return self._r
+    @radius.setter
+    def radius(self, v):
+        if v < 0: raise ValueError("Manfiy bo'lmaydi")
+        self._r = v
+59.  Python'da any() va all() nima?
+Javob: any(iterable) — kamida bitta True bo'lsa True qaytaradi. all(iterable) — barchasi True bo'lsa True qaytaradi.
+sonlar = [0, 1, 2, 3]
+any(sonlar)        # True — 1,2,3 bor
+all(sonlar)        # False — 0 bor
+all(x > 0 for x in [1,2,3])  # True
+60.  Python'da walrus operator (:=) nima?
+Javob: Walrus operator (:=) — o'zlashtirish va tekshirishni bitta ifodada amalga oshiradi. Python 3.8+ da mavjud.
+# Oddiy usul
+n = len(ma'lumot)
+if n > 10: print(n)
+# Walrus bilan
+if (n := len(ma'lumot)) > 10: print(n)
+61.  Python'da unpacking nima?
+Javob: Tuple yoki listni alohida o'zgaruvchilarga bo'lib olish. * bilan qolgan elementlarni listga yig'ish mumkin.
+a, b, c = (1, 2, 3)
+birinchi, *qolgan = [1,2,3,4,5]
+# birinchi=1, qolgan=[2,3,4,5]
+x, y = y, x  # qiymatlarni almashtirish
+62.  Python'da pass nima?
+Javob: pass — hech narsa qilmaydigan operator. Bo'sh blok yozmaslik uchun ishlatiladi. Kelajakda to'ldirish uchun placeholder sifatida.
+class Bo'lajak:
+    pass  # hozircha bo'sh
+
+def keyinroq(): pass
+63.  Ternary operator (shartli ifoda) nima?
+Javob: qiymat_agar_rost if shart else qiymat_agar_yolg'on — bir satrda if-else.
+yosh = 18
+holat = "Katta" if yosh >= 18 else "Kichik"
+# "Katta"
+64.  Python string'da escape sequence'lar qaysilar?
+Javob: \n — yangi qator, \t — tabulator, \\ — teskari chiziq, apostrophe — bitta tirnoq, \r — carriage return.
+print("Salom\nDunyo")  # ikki qatorda
+print("Ism:\tAli")    # tab bilan
+r"C:\\Users\\Ali"   # raw string
+65.  __name__ == "__main__" nima?
+Javob: Bu tekshirish fayl bevosita ishga tushirilgandami yoki import qilinganmi aniqlayd. Bevosita ishga tushirilganda __name__ == "__main__" bo'ladi.
+if __name__ == "__main__":
+    # Bu blok faqat bevosita ishlaganda ishlaydi
+    main()
+
+🔬  3-DARAJA: YUQORI-O'RTA (UPPER-INTERMEDIATE)
+66.  Itertor va Iterable farqi nima?
+Javob: Iterable — ustida iteratsiya qilish mumkin bo'lgan ob'ekt (__iter__ metodi bor): list, str, dict. Iterator — elementlarni birma-bir qaytaruvchi ob'ekt (__next__ metodi bor). iter() bilan iterable dan iterator olinadi.
+lst = [1, 2, 3]          # Iterable
+it = iter(lst)           # Iterator
+next(it)  # 1
+next(it)  # 2
+next(it)  # 3
+next(it)  # StopIteration xatosi
+67.  Context manager nima? with statement qanday ishlaydi?
+Javob: Context manager — resurslarni avtomatik ochib va yopib boshqaradi. __enter__ (kirish) va __exit__ (chiqish) metodlari. with statement xatoda ham __exit__ chaqirilishini kafolatlaydi.
+class FaylMenejer:
+    def __enter__(self):
+        self.f = open("test.txt")
+        return self.f
+    def __exit__(self, *args):
+        self.f.close()
+
+with FaylMenejer() as f:
+    matn = f.read()
+68.  contextlib.contextmanager decorator nima?
+Javob: Generator asosida context manager yaratishning oddiy usuli. yield gacha __enter__, yield dan keyin __exit__ ishlaydi.
+from contextlib import contextmanager
+@contextmanager
+def fayl_och(nom):
+    f = open(nom)
+    try:
+        yield f
+    finally:
+        f.close()
+69.  Python'da metaclass nima?
+Javob: Metaclass — sinflar sinfi. Sinflar qanday yaratilishini boshqaradi. type — Python'ning asosiy metaclass. __new__ va __init__ metodlari orqali sinflarni moslash mumkin.
+class MyMeta(type):
+    def __new__(mcs, nom, asoslar, ns):
+        return super().__new__(mcs, nom, asoslar, ns)
+class Mening(metaclass=MyMeta):
+    pass
+70.  Abstract class nima?
+Javob: Abstract class — to'g'ridan-to'g'ri ob'ekt yaratib bo'lmaydigan sinf. Faqat meros olish uchun. abc moduli va @abstractmethod decorator ishlatiladi. Bola sinf barcha abstract metodlarni amalga oshirishi kerak.
+from abc import ABC, abstractmethod
+class Shakl(ABC):
+    @abstractmethod
+    def yuza(self): pass
+class Doira(Shakl):
+    def yuza(self): return 3.14*self.r**2
+71.  Python'da MRO (Method Resolution Order) nima?
+Javob: MRO — ko'p merosda qaysi sinfning metodi chaqirilishini aniqlash tartibi. C3 linearizatsiya algoritmi ishlatiladi. ClassName.__mro__ bilan ko'rish mumkin.
+class A: pass
+class B(A): pass
+class C(A): pass
+class D(B, C): pass
+print(D.__mro__)
+# (<D>, <B>, <C>, <A>, <object>)
+72.  __slots__ nima va nima uchun ishlatiladi?
+Javob: __slots__ — ob'ekt atributlarini oldindan belgilab, __dict__ ni o'rniga bo'shliq jadvalidan foydalanadi. Xotira iste'molini kamaytiradi (20-50%), atributlarni cheklaydi.
+class Nuqta:
+    __slots__ = ["x", "y"]
+    def __init__(self, x, y):
+        self.x = x; self.y = y
+# nuqta.z = 3  # AttributeError!
+73.  Dataclass nima?
+Javob: dataclasses moduli — __init__, __repr__, __eq__ metodlarini avtomatik yaratadi. @dataclass decorator bilan. Python 3.7+ da mavjud.
+from dataclasses import dataclass
+@dataclass
+class Talaba:
+    ism: str
+    yosh: int
+    baho: float = 0.0
+t = Talaba("Ali", 15)
+print(t)  # Talaba(ism='Ali', yosh=15, baho=0.0)
+74.  namedtuple nima?
+Javob: collections.namedtuple — nomli maydonlarga ega tuple. Nomlar bilan elementlarga kirish mumkin. Immutable. Oddiy tupldan tezroq va xotirada tejamkor.
+from collections import namedtuple
+Nuqta = namedtuple("Nuqta", ["x", "y"])
+p = Nuqta(3, 5)
+p.x  # 3
+p.y  # 5
+p._asdict()  # {"x":3, "y":5}
+75.  defaultdict va OrderedDict nima?
+Javob: defaultdict — mavjud bo'lmagan kalit uchun default qiymat qaytaradi. OrderedDict — kiritish tartibini saqlaydi (Python 3.7+ da oddiy dict ham saqlaydi).
+from collections import defaultdict
+dd = defaultdict(list)
+dd["a"].append(1)  # KeyError yo'q!
+dd["b"].append(2)
+# {"a":[1], "b":[2]}
+76.  Counter nima?
+Javob: collections.Counter — elementlar sonini sanash uchun. most_common() — eng ko'p takrorlanganlari. Arifmetik amallari bor.
+from collections import Counter
+so'zlar = ["olma","banan","olma","uzum","banan","olma"]
+c = Counter(so'zlar)
+c.most_common(2)  # [("olma",3),("banan",2)]
+c["olma"]         # 3
+77.  deque nima va listdan qachon afzal?
+Javob: collections.deque — ikki tomonlama navbat. Bosh va oxirdan O(1) da qo'shish/o'chirish. List bosh tomonidan O(n) — sekin. appendleft(), popleft() metodlari bor.
+from collections import deque
+d = deque([1,2,3])
+d.appendleft(0)  # [0,1,2,3]
+d.popleft()      # 0 qaytaradi
+d.rotate(1)      # [3,1,2]
+78.  heapq moduli nima?
+Javob: heapq — min-heap (to'p) ma'lumot strukturasini amalga oshiradi. heappush(), heappop() O(log n) ishlaydi. nlargest(), nsmallest() qulay funksiyalar.
+import heapq
+lst = [3, 1, 4, 1, 5, 9, 2, 6]
+heapq.heapify(lst)
+heapq.heappop(lst)  # 1 (eng kichik)
+heapq.nlargest(3, lst)  # [9,6,5]
+79.  functools.lru_cache nima?
+Javob: Memoization (kesh) decorator. Funksiya natijalarini keshlab, takroriy hisoblashni oldini oladi. maxsize — kesh hajmi. Rekursiv funksiyalarda juda foydali.
+from functools import lru_cache
+@lru_cache(maxsize=128)
+def fibonacci(n):
+    if n < 2: return n
+    return fibonacci(n-1) + fibonacci(n-2)
+fibonacci(100)  # tez ishlaydi!
+80.  functools.partial nima?
+Javob: partial — funksiyaning ba'zi argumentlarini oldindan belgilab, yangi funksiya yaratadi.
+from functools import partial
+def quvvat(asos, daraja):
+    return asos ** daraja
+kvadrat = partial(quvvat, daraja=2)
+kub = partial(quvvat, daraja=3)
+kvadrat(5)  # 25
+kub(3)      # 27
+81.  Python'da regular expression nima?
+Javob: re moduli — matn qidiruvi uchun. re.match() — boshidan, re.search() — istalgan joydan, re.findall() — barchasini topish, re.sub() — almashtirish.
+import re
+matn = "Telefon: +998901234567"
+r = re.search(r'\d+', matn)
+r.group()  # "998901234567"
+emaillar = re.findall(r'[\w]+@[\w]+\.\w+', matn)
+82.  Python'da JSON bilan ishlash?
+Javob: json moduli. json.dumps() — Python ob'ektini JSON stringga aylantiradi. json.loads() — JSON stringni Python ob'ektiga aylantiradi. json.dump/load — fayl bilan ishlash.
+import json
+d = {"ism": "Ali", "yosh": 15}
+json_str = json.dumps(d, ensure_ascii=False)
+qayta = json.loads(json_str)
+
+with open("d.json","w") as f:
+    json.dump(d, f, ensure_ascii=False)
+83.  Python'da os moduli nima?
+Javob: os — operatsion tizim bilan ishlash. os.path — fayl yo'llari. Muhim funksiyalar: os.getcwd(), os.listdir(), os.mkdir(), os.path.exists(), os.path.join().
+import os
+os.getcwd()                    # joriy papka
+os.listdir(".")               # papka tarkibi
+os.path.join("papka","fayl") # yo'l birlashtirish
+os.path.exists("fayl.txt")   # mavjudligini tekshirish
+84.  Python'da sys moduli nima?
+Javob: sys — Python interpretatori bilan ishlash. sys.argv — buyruq qatori argumentlari, sys.path — import yo'llari, sys.exit() — dasturni to'xtatish, sys.stdin/stdout/stderr.
+import sys
+sys.argv          # ["script.py","arg1","arg2"]
+sys.version       # Python versiyasi
+sys.exit(0)       # dasturni to'xtatish
+85.  Python'da datetime moduli nima?
+Javob: datetime — sana va vaqt bilan ishlash. datetime.now() — hozirgi vaqt, timedelta — vaqt farqi, strftime() — formatli chiqish, strptime() — stringdan parse.
+from datetime import datetime, timedelta
+hozir = datetime.now()
+print(hozir.strftime("%Y-%m-%d %H:%M"))
+ertaga = hozir + timedelta(days=1)
+farq = datetime(2025,1,1) - hozir
+
+🚀  4-DARAJA: ILGOR (ADVANCED)
+86.  GIL (Global Interpreter Lock) nima?
+Javob: GIL — CPython interpretatorida faqat bitta thread bir vaqtda Python bytekodini bajarishi mumkinligini ta'minlovchi lock. Bu multithreading ni CPU-bound vazifalar uchun samarasiz qiladi, lekin I/O-bound uchun threading yaxshi ishlaydi.
+87.  Threading va Multiprocessing farqi?
+Javob: Threading — bir jarayon ichida parallel iplar, xotira umumiy, GIL cheklashi bor, I/O-bound uchun yaxshi. Multiprocessing — alohida jarayonlar, xotira mustaqil, GIL yo'q, CPU-bound uchun yaxshi.
+from threading import Thread
+from multiprocessing import Process
+
+t = Thread(target=funksiya, args=(1,))
+p = Process(target=funksiya, args=(1,))
+t.start(); p.start()
+t.join(); p.join()
+88.  asyncio event loop qanday ishlaydi?
+Javob: Event loop — asinxron vazifalar (coroutine)larni boshqaruvchi tsikl. Bitta thread da "kutayotgan" vazifalar o'rniga boshqalarga o'tadi. await — event loop ga boshqaruvni qaytaradi.
+import asyncio
+async def asosiy():
+    await asyncio.sleep(1)
+    return "Natija"
+asyncio.run(asosiy())
+89.  asyncio.gather() va asyncio.create_task() farqi?
+Javob: gather() — bir nechta coroutine ni parallel bajarib, natijalar listini qaytaradi, hammasi tugashini kutadi. create_task() — coroutine ni zudlik bilan ishga tushiradi, boshqa ishni davom ettirish mumkin.
+# gather — parallel, kutadi
+n1, n2 = await asyncio.gather(f1(), f2())
+# create_task — ishga tushiradi, keyinroq kutish mumkin
+task = asyncio.create_task(f1())
+await boshqa_ish()
+natija = await task
+90.  Python'da __dunder__ metodlari (magic methods) nima?
+Javob: Dunder (double underscore) metodlar — Python'ning maxsus protokollarini amalga oshiradi. __len__, __getitem__, __setitem__, __contains__, __iter__, __next__, __add__, __eq__, __lt__ va boshqalar.
+class Vector:
+    def __init__(self,x,y): self.x=x;self.y=y
+    def __add__(self,o): return Vector(self.x+o.x,self.y+o.y)
+    def __len__(self): return 2
+    def __repr__(self): return f"V({self.x},{self.y})"
+91.  Descriptor protocol nima?
+Javob: Descriptor — __get__, __set__, __delete__ metodlari bor ob'ekt. Atributlarga murojaat qilishni boshqaradi. property ichki descriptor ishlatadi.
+class Manfiy_Emas:
+    def __set_name__(self, owner, name):
+        self.name = name
+    def __get__(self, obj, type=None):
+        return obj.__dict__.get(self.name, 0)
+    def __set__(self, obj, val):
+        if val < 0: raise ValueError
+        obj.__dict__[self.name] = val
+92.  weakref nima?
+Javob: weakref — ob'ektga zaif (kuchsiz) murojaat yaratadi. Ob'ektni garbage collection dan to'sib qolmaydi. Kesh va circular reference muammolarini hal qilishda ishlatiladi.
+import weakref
+class Katta: pass
+ob = Katta()
+z = weakref.ref(ob)
+z()     # Katta ob'ekti
+del ob
+z()     # None — ob'ekt yo'q qilindi
+93.  Python'da memory management qanday ishlaydi?
+Javob: Python reference counting (hisoblagich) orqali xotirani boshqaradi. Hisoblagich 0 ga tushsa ob'ekt o'chiriladi. Circular reference uchun cyclic garbage collector ham ishlaydi. sys.getrefcount() bilan tekshirish mumkin.
+import sys
+x = [1,2,3]
+sys.getrefcount(x)  # 2 (x + argument)
+94.  __new__ va __init__ farqi?
+Javob: __new__ — ob'ektni yaratadi (xotirani ajratadi), __init__ — yaratilgan ob'ektni sozlaydi. Immutable sinflar (str, int, tuple) uchun __new__ muhim. Odatda faqat __init__ yoziladi.
+class Bitta:
+    _instance = None
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+        return cls._instance  # Singleton pattern
+95.  Python'da Singleton pattern qanday amalga oshiriladi?
+Javob: Singleton — faqat bitta ob'ekt yaratilishini ta'minlaydi. __new__ override, metaclass, yoki modul darajasida amalga oshirish mumkin.
+class Singleton:
+    _instance = None
+    def __new__(cls, *a, **kw):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+96.  Python profiling va optimization nima?
+Javob: cProfile/profile — funksiya vaqtini o'lchash. timeit — kod bo'lagini o'lchash. line_profiler — qator bo'yicha. Optimizatsiya: algoritmni yaxshilash, C extension, Cython, PyPy.
+import cProfile
+cProfile.run("funksiya()")
+
+import timeit
+timeit.timeit("sum(range(1000))", number=10000)
+97.  Python'da type hints (tur izohlari) nima?
+Javob: Type hints — o'zgaruvchi va funksiya turlarini izohlab ko'rsatish (Python 3.5+). Majburiy emas, lekin kod o'qilishini yaxshilaydi. mypy bilan tekshirish mumkin.
+from typing import List, Dict, Optional, Union
+def qo'shish(a: int, b: int) -> int:
+    return a + b
+def topish(ism: str) -> Optional[str]:
+    ...
+raqamlar: List[int] = [1,2,3]
+98.  Protocol va ABC farqi nima?
+Javob: ABC (Abstract Base Class) — nominal typing, meros olish talab qilinadi. Protocol (Python 3.8+) — structural typing, faqat metodlar bo'lsa yetarli (duck typing). Protocol import qilishdan ham foydalanish mumkin.
+from typing import Protocol
+class Qichqiruvchi(Protocol):
+    def ovoz(self) -> str: ...
+# Bu sinfdan meros olmasa ham ishlaydi:
+class It:
+    def ovoz(self) -> str: return "Vov"
+99.  __init__.py fayli nima?
+Javob: __init__.py — papkani Python paketi (package) sifatida belgilaydi. Paket import qilinganda avtomatik bajariladi. Python 3.3+ da bo'sh bo'lsa ham paket ishlaydi (namespace package).
+mypaket/
+    __init__.py   # paketni belgilaydi
+    modul1.py
+    modul2.py
+
+from mypaket import modul1
+from mypaket.modul2 import funksiya
+100.  Python'da __all__ nima?
+Javob: __all__ — modulda from modul import * qilinganda qaysi nomlar eksport qilinishini belgilaydi. Lug'at interfeysini nazorat qilish uchun.
+# modul.py
+__all__ = ["ommaviy", "ham_bu"]
+def ommaviy(): pass
+def ham_bu(): pass
+def _ichki(): pass  # __all__ da yo'q, import qilinmaydi
+101.  Async generator nima?
+Javob: Async generator — async def ichida yield ishlatiladi. async for bilan iteratsiya qilinadi. Katta ma'lumotlarni asinxron qayta ishlashda foydali.
+async def son_generator(n):
+    for i in range(n):
+        await asyncio.sleep(0)  # boshqalarga yo'l beradi
+        yield i
+
+async def main():
+    async for son in son_generator(5):
+        print(son)
+102.  Python'da __getattr__ va __getattribute__ farqi?
+Javob: __getattribute__ — har qanday atributga murojaat uchun chaqiriladi. __getattr__ — faqat atribut topilmaganda chaqiriladi. __getattr__ odatdagi holatlarda ishlatiladi.
+class Dinamik:
+    def __getattr__(self, nom):
+        return f"{nom} topilmadi, lekin xato yo'q!"
+d = Dinamik()
+d.mavjud_emas  # "mavjud_emas topilmadi, lekin xato yo'q!"
+103.  Memoization nima va qanday amalga oshiriladi?
+Javob: Memoization — funksiya natijalarini keshlab saqlash. Bir xil argumentlar uchun hisoblamasdan keshdan qaytarish. functools.lru_cache yoki manual dict bilan.
+kesh = {}
+def fib(n):
+    if n in kesh: return kesh[n]
+    if n < 2: return n
+    kesh[n] = fib(n-1) + fib(n-2)
+    return kesh[n]
+104.  Python'da Enum nima?
+Javob: enum moduli — konstantalar to'plami uchun. Nomlangan qiymatlar. Taqqoslash, iteratsiya imkoniyati. IntEnum — int bilan taqqoslash mumkin.
+from enum import Enum, auto
+class Rang(Enum):
+    QIZIL = auto()
+    YASHIL = auto()
+    KO'K = auto()
+Rang.QIZIL.name   # "QIZIL"
+Rang.QIZIL.value  # 1
+105.  Python'da struct packing nima?
+Javob: struct moduli — Python qiymatlarini C struct formatidagi baytlarga aylantiradi va aksincha. Ikkilik fayl formatlar, tarmoq protokollari uchun.
+import struct
+packed = struct.pack(">IH", 1000, 255)  # big-endian
+struct.unpack(">IH", packed)            # (1000, 255)
+106.  Python'da inspect moduli nima?
+Javob: inspect — ob'ektlar haqida ma'lumot olish. Funksiya signature, kod manba, sinf ierarxiyasi. Debugging va metaprogramming uchun.
+import inspect
+def f(a, b=1): pass
+inspect.signature(f)          # (a, b=1)
+inspect.getsource(f)          # manba kodi
+inspect.getmembers(ob, callable)
+107.  Python'da pickle moduli nima?
+Javob: pickle — Python ob'ektlarini ikkilik formatga seriyalash (serialization) va deseriyalash. Fayl, tarmoq orqali uzatish uchun. Ishonilmagan manbalardan pickle.load() xavfli!
+import pickle
+ma'lumot = {"a": [1,2,3], "b": True}
+with open("f.pkl","wb") as f:
+    pickle.dump(ma'lumot, f)
+with open("f.pkl","rb") as f:
+    qayta = pickle.load(f)
+108.  Python'da logging moduli nima?
+Javob: logging — print() o'rniga professional log yozish. Darajalari: DEBUG < INFO < WARNING < ERROR < CRITICAL. Faylga yozish, formatlashtirish imkoniyati.
+import logging
+logging.basicConfig(level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s")
+logging.info("Boshlandi")
+logging.warning("Diqqat!")
+logging.error("Xato!")
+109.  Python'da unittest nima?
+Javob: unittest — Python'ning o'rnatilgan test framework. TestCase sinfi, assertEqual, assertRaises, setUp/tearDown metodlari. python -m unittest bilan ishga tushiriladi.
+import unittest
+class TestQo'shish(unittest.TestCase):
+    def test_oddiy(self):
+        self.assertEqual(2+2, 4)
+    def test_manfiy(self):
+        self.assertRaises(ZeroDivisionError, lambda: 1/0)
+if __name__=="__main__": unittest.main()
+110.  Python'da __call__ metodi nima?
+Javob: __call__ — ob'ektni funksiya kabi chaqirish imkonini beradi. ob(args) — ob.__call__(args) bilan teng. Dekorator sinflari, funksional ob'ektlar uchun.
+class Hisoblash:
+    def __init__(self): self.son = 0
+    def __call__(self):
+        self.son += 1
+        return self.son
+h = Hisoblash()
+h()  # 1
+h()  # 2
+111.  itertools moduli nima?
+Javob: itertools — iteratorlar bilan ishlash uchun. chain(), cycle(), repeat(), product(), permutations(), combinations(), groupby(), islice() — eng ko'p ishlatiladilari.
+import itertools
+list(itertools.chain([1,2],[3,4]))  # [1,2,3,4]
+list(itertools.combinations("ABC",2))
+# [("A","B"),("A","C"),("B","C")]
+list(itertools.product([0,1], repeat=2))
+# [(0,0),(0,1),(1,0),(1,1)]
+112.  Python'da operator overloading nima?
+Javob: Operator overloading — __add__, __sub__, __mul__, __truediv__, __eq__, __lt__ va boshqa dunder metodlar orqali operatorlarni qayta aniqlash.
+class Vaqt:
+    def __init__(self, daqiqa):
+        self.d = daqiqa
+    def __add__(self, boshqa):
+        return Vaqt(self.d + boshqa.d)
+    def __str__(self):
+        return f"{self.d // 60}:{self.d % 60:02}"
+113.  Python'da functools.reduce nima?
+Javob: reduce(f, iterable) — ketma-ketlikni biriktirib, bitta qiymatga keltiradi. Har qadam: f(to'plangan, keyingi).
+from functools import reduce
+sonlar = [1,2,3,4,5]
+ko'paytma = reduce(lambda x,y: x*y, sonlar)
+# 1*2*3*4*5 = 120
+yig'indi = reduce(lambda x,y: x+y, sonlar, 0)
+114.  Python'da __hash__ va hashable nima?
+Javob: __hash__ — ob'ektning hash qiymatini qaytaradi. Hashable ob'ektlar dict kalit va set element bo'la oladi. O'zgaruvchan ob'ektlar (list, dict) hashable emas. Tuple hashable.
+hash("salom")    # butun son
+hash((1,2,3))   # tuple hashable
+# hash([1,2,3])  # TypeError — list hashable emas
+d = {(1,2): "nuqta"}  # tuple kalit bo'la oladi
+115.  Python'da string interning nima?
+Javob: String interning — Python ba'zi stringlarni (identifikatorga o'xshash) bir marta xotirada saqlaydi. sys.intern() bilan majburlash mumkin. is operatori bilan ko'rish mumkin.
+a = "salom"
+b = "salom"
+a is b  # True — intern qilingan
+c = "salom dunyo!"
+d = "salom dunyo!"
+c is d  # False — garantiya yo'q
+116.  Python'da __enter__ va __exit__ qanday ishlaydi?
+Javob: __enter__ — with bloki boshida chaqiriladi, as ga qaytariladi. __exit__(exc_type, exc_val, tb) — blok tugaganda. True qaytarsa exception bostiriladi.
+class Vaqtchi:
+    def __enter__(self):
+        import time
+        self.t = time.time()
+        return self
+    def __exit__(self, *a):
+        print(f"Vaqt: {time.time()-self.t:.3f}s")
+with Vaqtchi(): hisoblash()
+117.  Python bytecode nima?
+Javob: Python manba kodi avval bytekodga (.pyc, __pycache__) kompilyatsiya qilinadi. dis moduli bilan ko'rish mumkin. Bytekod — PVM uchun past darajali ko'rsatmalar.
+import dis
+def f(x): return x * 2
+dis.dis(f)
+# LOAD_FAST, LOAD_CONST, BINARY_OP...
+118.  Python'da assert nima?
+Javob: assert shart, "xabar" — shart False bo'lsa AssertionError chiqaradi. Debug uchun ishlatiladi. python -O flag bilan ishlatilganda o'chiriladi.
+def bo'l(a, b):
+    assert b != 0, "Sifr bilan bo'lish mumkin emas!"
+    return a / b
+bo'l(10, 0)  # AssertionError: Sifr bilan...
+119.  Python'da del nima?
+Javob: del — ob'ektning nomini o'chiradi (reference ni). Hisoblagich kamayadi. Nol bo'lsa ob'ekt xotiradan o'chiriladi. List elementi yoki slice ham o'chirish mumkin.
+x = [1,2,3,4,5]
+del x[2]     # [1,2,4,5]
+del x[1:3]   # [1,5]
+a = 10
+del a
+# print(a)  # NameError!
+120.  Python'da try-except da exception zanjiri (chaining) nima?
+Javob: raise ... from ... — yangi exception chiqarishda asl sababni saqlab qoladi. raise ... from None — asl sababni yashiradi.
+try:
+    int("abc")
+except ValueError as e:
+    raise RuntimeError("Tur xatosi") from e
+# RuntimeError: Tur xatosi
+# The above exception was the direct cause of...
+
+💎  5-DARAJA: EKSPERT (EXPERT)
+121.  CPython, PyPy, Jython farqlari?
+Javob: CPython — standart, C da yozilgan interpreter. PyPy — JIT kompilyatsiya, 5-10x tezroq. Jython — Java Virtual Machine da ishlaydi. IronPython — .NET CLR da. MicroPython — mikrokontrollerlar uchun.
+122.  Python'da C extension yozish qanday?
+Javob: C extension — Python dan C funksiyalarini chaqirish. Uch usul: ctypes (C kutubxona), cffi (C Foreign Function Interface), yoki Python/C API (Python.h). Cython ham yarim C kodi yozishga imkon beradi.
+import ctypes
+lib = ctypes.CDLL("./mylib.so")
+lib.factorial(10)  # C funksiyasi
+123.  Python'da import system qanday ishlaydi?
+Javob: Import: sys.modules keshni tekshiradi → finder → loader → modul yaratish. importlib moduli bilan sozlash mumkin. sys.path — qidiruv yo'llari. Meta path finders — maxsus import manba.
+import importlib
+importlib.import_module("json")  # dinamik import
+importlib.reload(modul)          # qayta yuklash
+124.  Python'da __init_subclass__ nima?
+Javob: __init_subclass__ — sinf meros olinganda ota sinfda avtomatik chaqiriladi. Metaclass ishlatmasdan meros ni nazorat qilish mumkin.
+class Plugin:
+    _royhati = []
+    def __init_subclass__(cls, **kw):
+        super().__init_subclass__(**kw)
+        Plugin._royhati.append(cls)
+class PluginA(Plugin): pass
+Plugin._royhati  # [PluginA]
+125.  Python'da __class_getitem__ nima?
+Javob: __class_getitem__ — sinf[parametr] sintaksisini qo'llabquvvatlash uchun. Generic sinflar (List[int], Dict[str, int]) shu mexanizm orqali ishlaydi.
+class GenericBox:
+    def __class_getitem__(cls, tur):
+        return f"Box[{tur.__name__}]"
+GenericBox[int]   # "Box[int]"
+GenericBox[str]   # "Box[str]"
+126.  Python'da __set_name__ nima?
+Javob: __set_name__(owner, name) — descriptor sinfga qo'shilganda chaqiriladi. Descriptor o'zining nomini bilishi mumkin. Python 3.6+ da mavjud.
+class Tekshirish:
+    def __set_name__(self, owner, name):
+        self.name = name
+    def __set__(self, obj, val):
+        if not isinstance(val, int):
+            raise TypeError(f"{self.name} int bo'lishi kerak")
+        obj.__dict__[self.name] = val
+127.  Coroutine va generator farqi?
+Javob: Generator — faqat yield ile qiymat chiqaradi (ishlab chiqaruvchi). Coroutine — yield ile qiymat qabul qilishi ham mumkin (send()). asyncio coroutine — asinxron kutish uchun.
+# Classic coroutine (send bilan)
+def yig'uvchi():
+    jami = 0
+    while True:
+        qiymat = yield jami
+        jami += qiymat
+g = yig'uvchi()
+next(g)       # ishga tushirish
+g.send(10)    # 10
+g.send(20)    # 30
+128.  Python'da match-case (structural pattern matching) nima?
+Javob: Python 3.10+ da qo'shilgan. switch-case ga o'xshash, lekin kuchliroq. Strukturaviy mos kelishni tekshiradi: tuple, list, dict, sinf atributlari.
+def tekshir(buyruq):
+    match buyruq:
+        case "chiq": return False
+        case ("yur", x, y): print(f"{x},{y}")
+        case {"tur": "quit"}: return False
+        case _: print("noma'lum")
+129.  Python'da __future__ nima?
+Javob: __future__ — yangi Python versiyasidagi xususiyatlarni eski versiyada sinash. from __future__ import annotations — lazyeval type hints uchun.
+from __future__ import annotations
+def f(x: list[int]) -> dict[str, int]:
+    # Python 3.9+ sintaksisi eskida ishlaydi
+    ...
+130.  Python'da ctypes nima va qanday ishlatiladi?
+Javob: ctypes — Python dan C kutubxonalarini (DLL/SO) to'g'ridan-to'g'ri chaqirish. C turlari: c_int, c_double, c_char_p. POINTER, Structure, Union.
+import ctypes
+libc = ctypes.CDLL("libc.so.6")
+libc.printf(b"Hello %s\n", b"World")
+# C strukturasi
+class Nuqta(ctypes.Structure):
+    _fields_ = [("x",ctypes.c_int),("y",ctypes.c_int)]
+131.  Python'da __subclasshook__ nima?
+Javob: __subclasshook__ — ABC da issubclass() natijasini boshqaradi. Sinfdan meros olmasa ham "abstract sinfga tegishli" deb hisoblanishiga imkon beradi. Duck typing va ABC ni birlashtiradi.
+class Qichqiruvchi(ABC):
+    @classmethod
+    def __subclasshook__(cls, C):
+        if cls is Qichqiruvchi:
+            if "ovoz" in C.__dict__:
+                return True
+        return NotImplemented
+132.  Python'da thread-safe ma'lumot strukturalari?
+Javob: queue.Queue — thread-safe FIFO navbat. threading.Lock, RLock, Semaphore, Event, Condition — sinxronizatsiya primitivlari. collections.deque — appendleft/append thread-safe.
+from queue import Queue
+from threading import Thread
+q = Queue()
+def ishchi():
+    while True:
+        vazifa = q.get()
+        bajar(vazifa)
+        q.task_done()
+133.  Python'da __missing__ metodi nima?
+Javob: __missing__ — dict subclassida mavjud bo'lmagan kalit so'ralganda chaqiriladi. defaultdict shu mexanizm orqali ishlaydi.
+class AutoDict(dict):
+    def __missing__(self, kalit):
+        self[kalit] = []
+        return self[kalit]
+d = AutoDict()
+d["a"].append(1)  # KeyError yo'q!
+d["a"]  # [1]
+134.  Python'da type() dan sinf yaratish?
+Javob: type(nom, (asoslar,), namespace) — dinamik sinf yaratish. type ning 3 argumentli shakli. Metaclass bilan bir xil.
+Hayvon = type("Hayvon", (), {"ovoz": lambda self: "..."})
+It = type("It", (Hayvon,), {"ovoz": lambda self: "Vov!"})
+it = It()
+it.ovoz()  # Vov!
+135.  Python'da async context manager nima?
+Javob: async with — asinxron context manager. __aenter__ va __aexit__ metodlari async bo'lishi kerak. Asinxron resurslarni boshqarish uchun (DB ulanish, fayl).
+class AsynDBUlanish:
+    async def __aenter__(self):
+        self.ulanish = await connect()
+        return self.ulanish
+    async def __aexit__(self, *a):
+        await self.ulanish.close()
+async def main():
+    async with AsynDBUlanish() as db:
+        await db.execute("SELECT 1")
+136.  Python'da __prepare__ nima?
+Javob: __prepare__ — metaclass metodi. Sinf namespace (lug'at) yaratishdan oldin chaqiriladi. Tartibli (OrderedDict) yoki maxsus namespace ishlatish imkonini beradi.
+class OrderedMeta(type):
+    @classmethod
+    def __prepare__(mcs, nom, asoslar):
+        from collections import OrderedDict
+        return OrderedDict()
+137.  Python'da packing va unpacking operator farqlari?
+Javob: * — positional, ** — keyword. Funksiya ta'rifida: *args (to'plash), **kwargs (to'plash). Funksiya chaqiruvda: *lst (yoyish), **d (yoyish). O'zlashtirmada: *qolgan (qolganini olish).
+def f(a, b, *c, **d): pass  # ta'rifda: to'plash
+f(1, 2, 3, 4, x=1)         # c=(3,4), d={"x":1}
+a, *b, c = [1,2,3,4,5]     # a=1, b=[2,3,4], c=5
+138.  Python'da slots vs dict performance?
+Javob: __slots__ ob'ektlar listda saqlanadi, __dict__ hash jadvali. slots: 30-50% kam xotira, 10-30% tezroq kirish. Ko'p ob'ekt yaratilganda muhim.
+import sys
+class SlotsBor:
+    __slots__ = ["x","y"]
+    def __init__(self): self.x=self.y=0
+class DictBor:
+    def __init__(self): self.x=self.y=0
+sys.getsizeof(SlotsBor())  # ~56 bayt
+sys.getsizeof(DictBor())   # ~152 bayt
+139.  Python'da generator pipeline nima?
+Javob: Generator zanjirini ketma-ket bog'lab, ma'lumotlarni birma-bir qayta ishlash. Xotirada faqat bitta element. Unix pipe ga o'xshash.
+def o'qish(fayl):
+    with open(fayl) as f:
+        for qator in f: yield qator.strip()
+def filtrlash(qatorlar, kalit):
+    for q in qatorlar:
+        if kalit in q: yield q
+def hisoblash(qatorlar):
+    return sum(1 for _ in qatorlar)
+# Pipeline:
+n = hisoblash(filtrlash(o'qish("log.txt"), "ERROR"))
+140.  Python'da abc.ABC va ABCMeta farqi?
+Javob: ABCMeta — to'g'ridan-to'g'ri metaclass sifatida. ABC — ABCMeta dan meros olgan yordamchi sinf. ABC dan meros olish ABCMeta metaclass dan foydalanish bilan teng.
+from abc import ABC, ABCMeta, abstractmethod
+# Ikkisi ekvivalent:
+class Shakl1(ABC): pass
+class Shakl2(metaclass=ABCMeta): pass
+141.  Python'da __class__ atributi?
+Javob: ob.__class__ — ob'ektning sinfini qaytaradi. type(ob) bilan teng. super() ichida __class__ yopiq (cell) o'zgaruvchi sifatida ishlatiladi.
+x = 42
+x.__class__         # <class 'int'>
+x.__class__ is int  # True
+type(x) is x.__class__  # True
+142.  Python'da Structural subtyping (Protocol) qanday ishlaydi?
+Javob: Protocol — metodlar to'plami aniqlaydi. Sinf Protocol dan meros olmasa ham, u metodlarga ega bo'lsa, runtime/static check da mos deb hisoblanadi. runtime_checkable bilan isinstance() ham ishlaydi.
+from typing import Protocol, runtime_checkable
+@runtime_checkable
+class Iteratsiyalanuvchi(Protocol):
+    def __iter__(self): ...
+isinstance([1,2,3], Iteratsiyalanuvchi)  # True
+143.  Python'da PEP 8 nima?
+Javob: PEP 8 — Python kod yozish uslubi bo'yicha rasmiy qo'llanma. Asosiy qoidalar: 4 bo'shliq indentation, 79 belgi uzunlik, ikkita bo'sh qator funksiyalar orasida, o'zgaruvchilar snake_case, sinflar PascalCase.
+144.  Python'da virtual environment nima?
+Javob: venv — izolyatsiyalangan Python muhiti. Har loyiha uchun alohida paketlar. python -m venv muhit bilan yaratiladi. activate bilan faollashtiriladi. requirements.txt bilan paketlar saqlanadi.
+python -m venv muhit
+source muhit/bin/activate   # Linux/Mac
+muhit\Scripts\activate      # Windows
+pip install paket
+pip freeze > requirements.txt
+145.  Python'da __doc__ va docstring nima?
+Javob: Docstring — funksiya/sinf/modul haqida ma'lumot. Birinchi string literal. __doc__ atributi orqali kirish. help() funksiyasi docstringni chiqaradi.
+def qo'shish(a, b):
+    """
+    Ikki sonni qo'shadi.
+    Args: a, b — qo'shiladigan sonlar
+    Returns: yig'indi
+    """
+    return a + b
+print(qo'shish.__doc__)
+146.  Python'da __annotations__ nima?
+Javob: __annotations__ — funksiya yoki sinf darajasida type hints ni saqlovchi dict. Python 3.10+ da get_type_hints() bilan to'liq olish mumkin.
+def f(x: int, y: str = "hi") -> bool: pass
+f.__annotations__
+# {"x":<class 'int'>, "y":<class 'str'>, "return":<class 'bool'>}
+147.  Python'da Garbage Collector (gc) moduli?
+Javob: gc moduli — Python'ning cyclic garbage collector ni boshqaradi. gc.collect() — qo'lda tozalash. gc.disable() — o'chirish. gc.get_objects() — track qilinayotgan ob'ektlar. 3 avlod (generation 0, 1, 2).
+import gc
+gc.collect()          # qo'lda tozalash
+gc.get_count()        # (generation0, gen1, gen2)
+gc.disable()          # avtomatik off
+len(gc.get_objects()) # kuzatilayotgan ob'ektlar soni
+148.  Python'da __init_subclass__ va __subclasshook__ farqi?
+Javob: __init_subclass__ — meros olinganda ota sinfda chaqiriladi, meros olishni sozlash uchun. __subclasshook__ — issubclass() va isinstance() natijasini boshqarish uchun, ABC bilan birga.
+149.  Python'da exec() va eval() nima va xavflari?
+Javob: eval(ifoda) — Python ifodani hisoblaydi, natija qaytaradi. exec(kod) — to'liq Python kodni bajaradi. XAVFLI: foydalanuvchi kiritgan matnni hech qachon eval/exec ga bermang — kod injection!
+eval("2 + 2")        # 4
+eval("x * 2", {"x": 5})  # 10
+exec("x = 10; print(x)")  # 10
+# HECH QACHON:
+# eval(input())  # Juda xavfli!
+150.  Python'da __index__ metodi nima?
+Javob: __index__ — ob'ektni butun son sifatida ishlatish imkonini beradi. Slicing, bin(), hex(), oct() uchun kerak. __int__ dan farqi: __index__ aniq (lossless) konversiya kafolatlaydi.
+class Indeks:
+    def __init__(self, n): self.n = n
+    def __index__(self): return self.n
+i = Indeks(2)
+lst = [10, 20, 30, 40]
+lst[i]       # 30
+bin(i)       # "0b10"

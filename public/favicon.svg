@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#0F1115"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" stroke="url(#ring)" stroke-opacity="0.35" stroke-width="1.5"/>
+  <!-- Paimon Floating Halo Crown -->
+  <ellipse cx="32" cy="18" rx="15" ry="5.5" transform="rotate(-8 32 18)" stroke="url(#paimonGold)" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="62 10"/>
+  <!-- Paimon Cosmic Hairclip / Cape Four-Point Star -->
+  <path d="M32 23C33.4 30.8 36.2 33.6 44 35C36.2 36.4 33.4 39.2 32 47C30.6 39.2 27.8 36.4 20 35C27.8 33.6 30.6 30.8 32 23Z" fill="url(#paimonHot)"/>
+  <!-- Inner Core Spark -->
+  <circle cx="32" cy="35" r="2.6" fill="#FFF7F2"/>
+  <!-- Paimon Scarf Wing Motifs -->
+  <path d="M16 45C20 42.5 24 44 26.5 47.5" stroke="#FFB06A" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M48 45C44 42.5 40 44 37.5 47.5" stroke="#FFB06A" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Corner Star Sparkles -->
+  <path d="M16 20L17 22.2L19.2 23.2L17 24.2L16 26.4L15 24.2L12.8 23.2L15 22.2L16 20Z" fill="#FFB06A"/>
+  <path d="M49 23L49.8 24.7L51.5 25.5L49.8 26.3L49 28L48.2 26.3L46.5 25.5L48.2 24.7L49 23Z" fill="#FF8E63"/>
+  <defs>
+    <linearGradient id="paimonHot" x1="20" y1="23" x2="44" y2="47" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB06A"/>
+      <stop offset="55%" stop-color="#FF5A1F"/>
+      <stop offset="100%" stop-color="#D9430F"/>
+    </linearGradient>
+    <linearGradient id="paimonGold" x1="17" y1="14" x2="47" y2="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFD29D"/>
+      <stop offset="100%" stop-color="#FF5A1F"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB06A"/>
+      <stop offset="100%" stop-color="#FF5A1F"/>
+    </linearGradient>
+  </defs>
+</svg>
